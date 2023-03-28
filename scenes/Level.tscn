@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scenes/bg.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/floor.tres" type="TileSet" id=2]
+[ext_resource path="res://resources/normal_decoration.tres" type="TileSet" id=3]
+[ext_resource path="res://resources/grama.tres" type="TileSet" id=4]
+[ext_resource path="res://scenes/Mask.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scripts/Level.gd" type="Script" id=7]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+glow_enabled = true
+glow_hdr_threshold = 1.5
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="LevelDesign" type="Node2D" parent="."]
+
+[node name="Floor" type="TileMap" parent="LevelDesign"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 131078, 0, 0, 131079, 0, 2, 131094, 0, 0, 131095, 0, 1, 131096, 0, 1, 131097, 0, 1, 131098, 0, 2, 196614, 0, 65536, 196615, 0, 65538, 196619, 0, 0, 196620, 0, 1, 196621, 0, 1, 196622, 0, 2, 196630, 0, 65536, 196631, 0, 65537, 196632, 0, 65537, 196633, 0, 65537, 196634, 0, 65538, 262144, 0, 0, 262145, 0, 1, 262146, 0, 1, 262147, 0, 1, 262148, 0, 1, 262149, 0, 1, 262150, 0, 0, 262151, 0, 0, 262152, 0, 1, 262153, 0, 2, 262155, 0, 131072, 262156, 0, 131073, 262157, 0, 131073, 262158, 0, 131074, 262166, 0, 65536, 262167, 0, 65537, 262168, 0, 65537, 262169, 0, 65537, 262170, 0, 65538, 327680, 0, 131072, 327681, 0, 131073, 327682, 0, 131073, 327683, 0, 131073, 327684, 0, 131073, 327685, 0, 131073, 327686, 0, 131073, 327687, 0, 131073, 327688, 0, 131073, 327689, 0, 131074, 327702, 0, 131072, 327703, 0, 131073, 327704, 0, 131073, 327705, 0, 131073, 327706, 0, 131074, 393232, 0, 0, 393233, 0, 1, 393234, 0, 1, 393235, 0, 2, 458768, 0, 131072, 458769, 0, 131073, 458770, 0, 131073, 458771, 0, 131074 )
+
+[node name="Decoration" type="TileMap" parent="LevelDesign"]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 65547, 2, 0, 65558, 0, 0, 131084, 1, 0, 196608, 4, 0, 196610, 5, 0, 196611, 0, 0, 196613, 3, 0, 327696, 0, 0, 327699, 4, 0 )
+
+[node name="Grama" type="TileMap" parent="LevelDesign"]
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 327704, 2, 0, 327709, 2, 0, 458754, 1, 0, 458755, 1, 0, 458759, 0, 0, 458762, 0, 0, 458764, 0, 0, 458769, 0, 0, 720928, 1, 0, 720933, 1, 0 )
+
+[node name="ParallaxBg" parent="." instance=ExtResource( 1 )]
+
+[node name="Mask" parent="." instance=ExtResource( 5 )]
+
+[node name="Player" parent="." instance=ExtResource( 6 )]
+position = Vector2( 59, 63 )
+
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
